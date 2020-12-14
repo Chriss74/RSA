@@ -1,0 +1,75 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+        <title> BinHexDecQuiz </title>
+        <link rel="stylesheet" href="rsa.css">
+        <script src="rsa.js"></script>
+</head>
+<body> 
+
+    <div class="title">
+        <h2 > Εφαρμογή RSA </h2>
+                
+  
+                <form>
+                    <label for="max" title="max 10000">Εύρος p q</label>
+                    <input type="number" title="max 10000" step="1" min=100 max=10000 id="max"/> 
+                    <label for="message" title="max 10000">Μήνυμα (ακέραιος αριθμός) </label>
+                    <input type="number" title="max 10000" step="1" min=0 id="message"/>  
+                </form> 
+                <form>
+                      <label for="check" title="τσεκάρετε αν θέλετε να κρατήσετε ίδια τα p,q,e,d">Keep values</label>
+                      <input type="checkbox" id="check" title="τσεκάρετε αν θέλετε να κρατήσετε ίδια τα p,q,e,d">
+                      
+                  </form>
+     
+        
+         
+                    <form>
+                    <input type="button" id="Submit" value="Εμφάνιση" onclick="mySubmit()"/>
+                    <input type="button" id="Clear"  value="Καθαρισμός" onclick="Clean()"/>
+                </form> 
+               
+            
+                <br>
+               
+                 <table  id="solutionList" >
+                 <tr>
+                     <th title="ένας πρώτος αριθμός">p</th>
+                     <th title="ένας πρώτος αριθμός διαφορετικός από τον p">q</th>
+                     <th title="το γινόμενο p*q">n</th>
+                     <th title="το γινόμενο (p-1)*(q-1)">f</th>
+                     <th title="ένας περιττός αριθμός που δεν διαιρεί ακριβώς τον f">e</th>
+                     <th title="το κλειδί αποκρυπτογράφησης e*d=(x*f)+1">d</th>
+                 </tr>
+                 <tr>
+                    <td id="p"></td>
+                    <td id="q"></td>
+                    <td id="n"></td>
+                    <td id="f"></td>
+                    <td id="e"></td>
+                    <td id="d"></td>
+                  </tr>
+                </table>
+
+                  <table id="messagelist" >
+                  <tr>
+                      <th title="c=m^e mod n" class="msglist">κρυπτοκείμενο</th>
+                      <th title="m=c^d mod n" class="msglist">αποκρυπτογράφηση</th>
+                </tr>
+                <tr>
+                    <td id="encrypt" class="msglist"></th>
+                    <td id="decrypt" class="msglist"></th>
+                </tr>
+                </table>
+          
+          
+<div class=end> 
+    Πρόκειται για μια πολύ πρόχειρη πειραματική εφαρμογή RSA για εκπαιδευτικούς λόγους (ήθελα να μάθω τον RSA για ένα μάθημα). Οι p και q προκύπτουν από μια διαδικασία δημιουργίας array με απλούς πρώτους αριθμούς (όχι Sophie Germain πρώτους) και στη συνέχεια επιλογής με Math.random. Γίντεται έλεγχος εάν οι δύο αριθμοί είναι ίσοι και εάν το γινόμενό τους n είναι μεγαλύτερο από το μήνυμα. Το e και το d υπολογίζονται με παραγοντοποίηση του f+1 και αν αυτός είναι πρώτος αριθμός και δεν παραγοντοποιείται, με δημιουργία λίστας από τα 10 πρώτα xf+1 και τυχαία επιλογή και παραγοντοποίηση ενός από αυτά (Math.random). Το μήνυμα m μετρατρέπεται σε κρυπτοκείμενο και ξανά στο αρχικό κείμενο ολόκληρο, χωρίς να κοπεί σε κομμάτια. Για τον υπολογισμό του c=m^e mod n και m=c^d mod n χρησιμοποιήθηκε recursive αλγόριθμος. Στα τεστ που έκανα δείχνει να λειτουργεί και για πολύ μεγαλύτερα όρια από τα όρια που θέτει το πρόγραμμα, αλλά θα το ψάξω πιο εξαντλητικά άλλη φορά γιατί τώρα δεν έχω χρόνο. </div>
+<div class="left"></div>
+
+</div>
+        </body>
+        </html>
+        
